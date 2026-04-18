@@ -20,7 +20,7 @@ export const CATEGORIES = [
   { id: 'vuelos', label: 'Vuelos', icon: '✈️', color: '#0369a1' },
   { id: 'hoteles', label: 'Hoteles', icon: '🏨', color: '#7c3aed' },
   { id: 'excursiones', label: 'Excursiones', icon: '🗺️', color: '#16a34a' },
-  { id: 'gym', label: 'Gym', icon: '🏋️', color: '#f97316' },
+  { id: 'gym', label: 'Gym', icon: '🏋', color: '#f97316' },
   { id: 'suscripciones', label: 'Suscripciones', icon: '📺', color: '#7c3aed' },
   { id: 'seguro_coche', label: 'Seguro Coche', icon: '🚗🛡️', color: '#0f766e' },
   { id: 'seguro_vida', label: 'Seguro Vida', icon: '❤️🛡️', color: '#be123c' },
