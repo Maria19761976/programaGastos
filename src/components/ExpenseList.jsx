@@ -40,7 +40,10 @@ export default function ExpenseList({ expenses, onDelete, categories }) {
                       {cat.icon} {cat.label}
                     </span>
                   </td>
-                  <td className="td-desc">{e.description || '—'}</td>
+                  <td className="td-desc">
+                    {e.description || '—'}
+                    {e.notes && <span className="td-notes">{e.notes}</span>}
+                  </td>
                   <td>
                     <span className={`payment-pill ${e.payment === 'efectivo' ? 'cash' : ''}`}>
                       {e.payment === 'efectivo' ? '💵 Efectivo' : '💳 Tarjeta'}

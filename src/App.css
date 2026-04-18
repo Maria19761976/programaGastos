@@ -223,6 +223,36 @@
   color: #fff;
 }
 
+.notes-textarea {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 11px;
+  background: var(--surface2);
+  color: var(--text-heading);
+  outline: none;
+  width: 100%;
+  resize: vertical;
+  font-size: 13px;
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  line-height: 1.5;
+}
+.notes-textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(30,58,95,.1);
+  background: var(--surface);
+}
+.notes-textarea::placeholder { color: var(--text-muted); }
+
+.td-notes {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  font-style: italic;
+  white-space: normal;
+}
+
 .payment-pill {
   display: inline-flex;
   align-items: center;

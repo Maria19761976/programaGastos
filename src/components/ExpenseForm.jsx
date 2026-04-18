@@ -9,6 +9,7 @@ export default function ExpenseForm({ onAdd, categories }) {
     description: '',
     amount: '',
     payment: 'tarjeta',
+    notes: '',
   });
 
   const set = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
@@ -24,8 +25,9 @@ export default function ExpenseForm({ onAdd, categories }) {
       description: form.description.trim(),
       amount: parseFloat(form.amount),
       payment: form.payment,
+      notes: form.notes.trim(),
     });
-    setForm((f) => ({ ...f, description: '', amount: '' }));
+    setForm((f) => ({ ...f, description: '', amount: '', notes: '' }));
   };
 
   return (
@@ -91,6 +93,17 @@ export default function ExpenseForm({ onAdd, categories }) {
             💵 Efectivo
           </button>
         </div>
+      </div>
+
+      <div className="form-group" style={{ marginBottom: 12 }}>
+        <label>Notas (opcional)</label>
+        <textarea
+          placeholder="Añade cualquier detalle adicional..."
+          value={form.notes}
+          onChange={set('notes')}
+          rows={2}
+          className="notes-textarea"
+        />
       </div>
 
       <button type="submit" className="btn-primary">+ Añadir gasto</button>
