@@ -27,6 +27,10 @@ export const CATEGORIES = [
   { id: 'seguro_hogar', label: 'Seguro Hogar', icon: '🏠🛡️', color: '#1d4ed8' },
   { id: 'seguro_viaje', label: 'Seguro Viaje', icon: '✈️🛡️', color: '#0369a1' },
   { id: 'finca', label: 'Finca', icon: '🌿', color: '#15803d' },
+  { id: 'huerta', label: 'Huerta', icon: '🥦', color: '#4ade80' },
+  { id: 'obras', label: 'Obras', icon: '🔨', color: '#a16207' },
+  { id: 'hijos', label: 'Hijos', icon: '👶', color: '#f472b6' },
+  { id: 'regalos', label: 'Regalos', icon: '🎁', color: '#e11d48' },
   { id: 'otros', label: 'Otros', icon: '📦', color: '#94a3b8' },
 ];
 

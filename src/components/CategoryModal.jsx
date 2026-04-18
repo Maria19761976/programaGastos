@@ -6,6 +6,14 @@ const COLORS = [
   '#64748b','#0891b2',
 ];
 
+const EMOJI_OPTIONS = [
+  '🏠','⚡','💧','🔥','📡','🛒','🚗','🚘','⛽','💊',
+  '👕','🎬','📚','🧹','🏢','🐱','🐶','🧳','✈️','🏨',
+  '🗺️','🏋️','📺','🌿','🥦','🔨','👶','🎁','💰','💳',
+  '🍽️','☕','🎮','🎵','📷','🛠️','🌱','🌸','🧴','🎓',
+  '🏖️','🎯','🧠','🐾','🚲','🛵','🏡','🌊','🍕','📦',
+];
+
 export default function CategoryModal({ onAdd, onClose }) {
   const [label, setLabel] = useState('');
   const [icon, setIcon] = useState('📂');
@@ -45,14 +53,19 @@ export default function CategoryModal({ onAdd, onClose }) {
           </div>
 
           <div className="form-group" style={{ marginBottom: 12 }}>
-            <label>Icono (emoji)</label>
-            <input
-              type="text"
-              placeholder="📂"
-              value={icon}
-              onChange={(e) => setIcon(e.target.value)}
-              maxLength={4}
-            />
+            <label>Icono</label>
+            <div className="emoji-grid">
+              {EMOJI_OPTIONS.map((e) => (
+                <button
+                  key={e}
+                  type="button"
+                  className={`emoji-btn ${icon === e ? 'selected' : ''}`}
+                  onClick={() => setIcon(e)}
+                >
+                  {e}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="form-group" style={{ marginBottom: 20 }}>
