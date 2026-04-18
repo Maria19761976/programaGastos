@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import IncomeCard from './components/IncomeCard';
 import ExpenseForm from './components/ExpenseForm';
@@ -22,6 +22,11 @@ export default function App() {
   const [income, setIncome] = useStorage('ingresos_hogar', {});
   const [customCategories, setCustomCategories] = useStorage('categorias_custom', []);
   const [showModal, setShowModal] = useState(false);
+  const [darkMode, setDarkMode] = useStorage('dark_mode', false);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   const allCategories = [...CATEGORIES, ...customCategories];
 
@@ -53,7 +58,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <Header year={year} month={month} onPrev={prevMonth} onNext={nextMonth} />
+      <Header year={year} month={month} onPrev={prevMonth} onNext={nextMonth} darkMode={darkMode} onToggleDark={() => setDarkMode(d => !d)} />
       <main className="main">
         <IncomeCard income={monthIncome} total={monthTotal} onIncomeChange={updateIncome} />
         <div className="two-col">
