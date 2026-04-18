@@ -6,6 +6,7 @@ import Summary from './components/Summary';
 import ExpenseList from './components/ExpenseList';
 import Footer from './components/Footer';
 import CategoryModal from './components/CategoryModal';
+import RecurringModal from './components/RecurringModal';
 import { useStorage } from './hooks/useStorage';
 import { CATEGORIES } from './data/categories';
 import './App.css';
@@ -22,6 +23,9 @@ export default function App() {
   const [income, setIncome] = useStorage('ingresos_hogar', {});
   const [customCategories, setCustomCategories] = useStorage('categorias_custom', []);
   const [showModal, setShowModal] = useState(false);
+  const [showRecurring, setShowRecurring] = useState(false);
+  const [recurring, setRecurring] = useStorage('gastos_recurrentes', []);
+  const [appliedMonths, setAppliedMonths] = useStorage('meses_aplicados', []);
   const [darkMode, setDarkMode] = useStorage('dark_mode', false);
 
   useEffect(() => {
@@ -55,6 +59,23 @@ export default function App() {
 
   const addCustomCategory = (cat) => setCustomCategories((prev) => [...prev, cat]);
 
+  const addRecurring = (rec) => setRecurring((prev) => [...prev, rec]);
+  const deleteRecurring = (id) => setRecurring((prev) => prev.filter((r) => r.id !== id));
+
+  const recurringPending = recurring.length > 0 && !appliedMonths.includes(monthKey);
+
+  const applyRecurring = () => {
+    const firstDay = `${year}-${String(month + 1).padStart(2, '0')}-01`;
+    const newExpenses = recurring.map((r) => ({
+      ...r,
+      id: crypto.randomUUID(),
+      date: firstDay,
+      notes: '',
+    }));
+    setExpenses((prev) => [...prev, ...newExpenses]);
+    setAppliedMonths((prev) => [...prev, monthKey]);
+  };
+
   const prevMonth = () =>
     setNav(({ year, month }) =>
       month === 0 ? { year: year - 1, month: 11 } : { year, month: month - 1 }
@@ -69,6 +90,12 @@ export default function App() {
     <div className="app">
       <Header year={year} month={month} onPrev={prevMonth} onNext={nextMonth} darkMode={darkMode} onToggleDark={() => setDarkMode(d => !d)} />
       <main className="main">
+        {recurringPending && (
+          <div className="recurring-banner">
+            <span>🔁 Tienes <strong>{recurring.length}</strong> gasto{recurring.length > 1 ? 's' : ''} fijo{recurring.length > 1 ? 's' : ''} sin aplicar este mes</span>
+            <button className="btn-apply-recurring" onClick={applyRecurring}>Aplicar ahora</button>
+          </div>
+        )}
         <IncomeCard income={monthIncome} total={monthTotal} prevTotal={prevMonthTotal} onIncomeChange={updateIncome} />
         <div className="two-col">
           <div className="left-col">
@@ -85,9 +112,18 @@ export default function App() {
           </div>
         </div>
       </main>
-      <Footer onAddCategory={() => setShowModal(true)} />
+      <Footer onAddCategory={() => setShowModal(true)} onRecurring={() => setShowRecurring(true)} />
       {showModal && (
         <CategoryModal onAdd={addCustomCategory} onClose={() => setShowModal(false)} />
+      )}
+      {showRecurring && (
+        <RecurringModal
+          recurring={recurring}
+          categories={allCategories}
+          onAdd={addRecurring}
+          onDelete={deleteRecurring}
+          onClose={() => setShowRecurring(false)}
+        />
       )}
     </div>
   );

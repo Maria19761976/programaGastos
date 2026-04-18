@@ -654,6 +654,70 @@
   background: var(--danger-light);
 }
 
+/* ── Recurring banner ── */
+.recurring-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--primary-light);
+  border: 1.5px solid var(--primary);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 13.5px;
+  color: var(--primary);
+}
+
+.btn-apply-recurring {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.btn-apply-recurring:hover { background: var(--primary-hover); }
+
+.recurring-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.recurring-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--surface2);
+}
+
+.recurring-desc {
+  font-size: 13px;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recurring-amount {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-heading);
+  white-space: nowrap;
+}
+
+.modal-wide {
+  max-width: 480px !important;
+}
+
 /* ── Footer ── */
 .footer {
   background: var(--surface);
