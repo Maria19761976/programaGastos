@@ -2,17 +2,20 @@
 
 Aplicación web para controlar los gastos mensuales del hogar. Permite registrar ingresos y gastos, organizarlos por categorías y ver el saldo disponible en todo momento.
 
+🔗 **[Abrir app](https://maria19761976.github.io/programaGastos/)**
+
 ## ✨ Funcionalidades
 
 - **Ingresos mensuales** — introduce tus ingresos del mes y la app descuenta cada gasto automáticamente
 - **Registro de gastos** — añade gastos con fecha, categoría, descripción e importe
 - **Método de pago** — distingue entre pagos con tarjeta o en efectivo
-- **Categorías** — más de 20 categorías predefinidas (alquiler, luz, agua, alimentación, coche, gasolina, seguros, viajes, gym, Panchito, perro, finca...)
-- **Categorías personalizadas** — añade tus propias categorías desde el footer
+- **Categorías** — más de 30 categorías predefinidas (alquiler, luz, agua, alimentación, coche, gasolina, seguros, viajes, gym, Panchito, perro, finca, huerta, obras, hijos, regalos...)
+- **Categorías personalizadas** — añade tus propias categorías con nombre, emoji y color desde el footer
+- **Selector de emojis** — elige el icono de tu categoría desde una cuadrícula visual
 - **Desglose por categoría** — ve cuánto gastas en cada área con límites de presupuesto opcionales
 - **Navegación mensual** — consulta cualquier mes con las flechas del header
 - **Datos persistentes** — todo se guarda en el navegador (localStorage), sin servidor ni registro
-- **PWA instalable** — instálala en el móvil como una app nativa
+- **PWA instalable** — instálala en el móvil como una app nativa con el nombre "Gastos"
 
 ## 📱 Instalación en el móvil
 
@@ -24,7 +27,7 @@ Aplicación web para controlar los gastos mensuales del hogar. Permite registrar
 ### Android (Chrome)
 1. Abre la app en **Chrome**
 2. Pulsa los tres puntos ⋮
-3. Selecciona **"Añadir a pantalla de inicio"**
+3. Selecciona **"Añadir a pantalla de inicio"** o **"Instalar app"**
 
 ## 🗂️ Categorías incluidas
 
@@ -39,7 +42,8 @@ Aplicación web para controlar los gastos mensuales del hogar. Permite registrar
 | 🗺️ Excursiones | 🏋️ Gym | 📺 Suscripciones |
 | 🚗🛡️ Seguro Coche | ❤️🛡️ Seguro Vida | 🏠🛡️ Seguro Hogar |
 | ✈️🛡️ Seguro Viaje | 🐱 Panchito | 🐶 Perro |
-| 🌿 Finca | 📦 Otros | |
+| 🌿 Finca | 🥦 Huerta | 🔨 Obras |
+| 👶 Hijos | 🎁 Regalos | 📦 Otros |
 
 ## 🛠️ Tecnologías
 
@@ -47,6 +51,7 @@ Aplicación web para controlar los gastos mensuales del hogar. Permite registrar
 - [Vite 8](https://vite.dev/)
 - [vite-plugin-pwa](https://vite-pwa-org.netlify.app/) — soporte PWA y service worker
 - localStorage — persistencia de datos sin backend
+- GitHub Actions — despliegue automático en GitHub Pages
 
 ## 🚀 Instalación local
 
