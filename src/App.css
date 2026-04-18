@@ -855,9 +855,9 @@
 
 /* ── Responsive móvil ── */
 @media (max-width: 480px) {
-  .header { padding: 0 14px; height: 56px; }
-  .header-title { font-size: 17px; }
-  .month-label { font-size: 14px; min-width: 116px; }
+  .header { padding: 0 10px; height: auto; min-height: 56px; flex-wrap: wrap; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
+  .header-title { font-size: 15px; }
+  .month-label { font-size: 13px; min-width: 100px; }
   .nav-btn { width: 30px; height: 30px; font-size: 16px; }
 
   .main { padding: 10px; gap: 10px; }
@@ -898,4 +898,26 @@
   .td-desc { max-width: 100%; font-size: 12px; }
   .td-amount { font-size: 16px; }
   .table td:last-child { position: absolute; top: 8px; right: 8px; }
+
+  /* Recurring banner */
+  .recurring-banner { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .btn-apply-recurring { width: 100%; text-align: center; }
+
+  /* Budget alerts */
+  .budget-alert { font-size: 12px; }
+
+  /* Balance footer */
+  .balance-footer { flex-direction: column; align-items: flex-start; gap: 4px; }
+
+  /* Footer buttons */
+  .footer { flex-wrap: wrap; gap: 10px; }
+  .btn-add-category { font-size: 12px; padding: 7px 12px; }
+
+  /* Modal wide */
+  .modal-wide { max-width: 100% !important; }
+
+  /* Recurring modal list */
+  .recurring-row { grid-template-columns: auto 1fr auto auto; gap: 6px; }
+  .recurring-desc { font-size: 12px; }
+  .recurring-amount { font-size: 12px; }
 }
