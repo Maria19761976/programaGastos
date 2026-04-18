@@ -1,16 +1,91 @@
-# React + Vite
+# 🏡 Gastos del Hogar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web para controlar los gastos mensuales del hogar. Permite registrar ingresos y gastos, organizarlos por categorías y ver el saldo disponible en todo momento.
 
-Currently, two official plugins are available:
+## ✨ Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Ingresos mensuales** — introduce tus ingresos del mes y la app descuenta cada gasto automáticamente
+- **Registro de gastos** — añade gastos con fecha, categoría, descripción e importe
+- **Método de pago** — distingue entre pagos con tarjeta o en efectivo
+- **Categorías** — más de 20 categorías predefinidas (alquiler, luz, agua, alimentación, coche, gasolina, seguros, viajes, gym, Panchito, perro, finca...)
+- **Categorías personalizadas** — añade tus propias categorías desde el footer
+- **Desglose por categoría** — ve cuánto gastas en cada área con límites de presupuesto opcionales
+- **Navegación mensual** — consulta cualquier mes con las flechas del header
+- **Datos persistentes** — todo se guarda en el navegador (localStorage), sin servidor ni registro
+- **PWA instalable** — instálala en el móvil como una app nativa
 
-## React Compiler
+## 📱 Instalación en el móvil
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### iPhone (Safari)
+1. Abre la app en **Safari**
+2. Pulsa el botón compartir ↑
+3. Selecciona **"Añadir a pantalla de inicio"**
 
-## Expanding the ESLint configuration
+### Android (Chrome)
+1. Abre la app en **Chrome**
+2. Pulsa los tres puntos ⋮
+3. Selecciona **"Añadir a pantalla de inicio"**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🗂️ Categorías incluidas
+
+| Categoría | Categoría | Categoría |
+|-----------|-----------|-----------|
+| 🏠 Alquiler / Hipoteca | ⚡ Electricidad | 💧 Agua |
+| 🔥 Gas | 📡 Internet / Teléfono | 🛒 Alimentación |
+| 🚗 Transporte | 🚘 Coche | ⛽ Gasolina |
+| 💊 Salud / Farmacia | 👕 Ropa | 🎬 Ocio |
+| 📚 Educación | 🧹 Limpieza / Hogar | 🏢 Comunidad |
+| 🧳 Viajes | ✈️ Vuelos | 🏨 Hoteles |
+| 🗺️ Excursiones | 🏋️ Gym | 📺 Suscripciones |
+| 🚗🛡️ Seguro Coche | ❤️🛡️ Seguro Vida | 🏠🛡️ Seguro Hogar |
+| ✈️🛡️ Seguro Viaje | 🐱 Panchito | 🐶 Perro |
+| 🌿 Finca | 📦 Otros | |
+
+## 🛠️ Tecnologías
+
+- [React 19](https://react.dev/)
+- [Vite 8](https://vite.dev/)
+- [vite-plugin-pwa](https://vite-pwa-org.netlify.app/) — soporte PWA y service worker
+- localStorage — persistencia de datos sin backend
+
+## 🚀 Instalación local
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/Maria19761976/programaGastos.git
+cd programaGastos
+
+# Instalar dependencias
+npm install
+
+# Iniciar en desarrollo
+npm run dev
+
+# Construir para producción
+npm run build
+```
+
+## 📁 Estructura del proyecto
+
+```
+src/
+├── components/
+│   ├── Header.jsx          # Navegación entre meses
+│   ├── IncomeCard.jsx      # Tarjeta de ingresos y saldo
+│   ├── ExpenseForm.jsx     # Formulario para añadir gastos
+│   ├── Summary.jsx         # Desglose por categorías
+│   ├── ExpenseList.jsx     # Lista de gastos del mes
+│   ├── Footer.jsx          # Footer con botón de nueva categoría
+│   └── CategoryModal.jsx   # Modal para crear categorías personalizadas
+├── data/
+│   └── categories.js       # Categorías predefinidas
+├── hooks/
+│   └── useStorage.js       # Hook para localStorage
+├── App.jsx
+├── App.css
+└── index.css
+```
+
+## 📄 Licencia
+
+Uso personal. Todos los derechos reservados.
