@@ -2,9 +2,11 @@ function fmt(n) {
   return n.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' });
 }
 
-export default function IncomeCard({ income, total, onIncomeChange }) {
+export default function IncomeCard({ income, total, prevTotal, onIncomeChange }) {
   const balance = income - total;
   const balancePct = income > 0 ? Math.min((total / income) * 100, 100) : 0;
+  const diff = prevTotal > 0 ? total - prevTotal : null;
+  const diffPct = prevTotal > 0 ? Math.round(Math.abs((diff / prevTotal) * 100)) : null;
 
   return (
     <section className="income-card">
@@ -48,11 +50,18 @@ export default function IncomeCard({ income, total, onIncomeChange }) {
               style={{ width: `${balancePct}%` }}
             />
           </div>
-          <p className="balance-hint">
-            {balance >= 0
-              ? `${Math.round(balancePct)}% gastado de los ingresos del mes`
-              : `Excedido en ${fmt(Math.abs(balance))}`}
-          </p>
+          <div className="balance-footer">
+            <p className="balance-hint">
+              {balance >= 0
+                ? `${Math.round(balancePct)}% gastado de los ingresos del mes`
+                : `Excedido en ${fmt(Math.abs(balance))}`}
+            </p>
+            {diff !== null && (
+              <p className={`month-compare ${diff > 0 ? 'compare-up' : 'compare-down'}`}>
+                {diff > 0 ? '▲' : '▼'} {fmt(Math.abs(diff))} ({diffPct}%) vs mes anterior
+              </p>
+            )}
+          </div>
         </>
       )}
     </section>

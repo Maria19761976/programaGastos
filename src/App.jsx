@@ -44,6 +44,15 @@ export default function App() {
   const updateIncome = (value) => setIncome((prev) => ({ ...prev, [monthKey]: value }));
   const monthTotal = monthExpenses.reduce((s, e) => s + e.amount, 0);
 
+  const prevYear = month === 0 ? year - 1 : year;
+  const prevMonthNum = month === 0 ? 11 : month - 1;
+  const prevMonthTotal = expenses
+    .filter((e) => {
+      const d = new Date(e.date + 'T00:00:00');
+      return d.getFullYear() === prevYear && d.getMonth() === prevMonthNum;
+    })
+    .reduce((s, e) => s + e.amount, 0);
+
   const addCustomCategory = (cat) => setCustomCategories((prev) => [...prev, cat]);
 
   const prevMonth = () =>
@@ -60,7 +69,7 @@ export default function App() {
     <div className="app">
       <Header year={year} month={month} onPrev={prevMonth} onNext={nextMonth} darkMode={darkMode} onToggleDark={() => setDarkMode(d => !d)} />
       <main className="main">
-        <IncomeCard income={monthIncome} total={monthTotal} onIncomeChange={updateIncome} />
+        <IncomeCard income={monthIncome} total={monthTotal} prevTotal={prevMonthTotal} onIncomeChange={updateIncome} />
         <div className="two-col">
           <div className="left-col">
             <ExpenseForm onAdd={addExpense} categories={allCategories} />
